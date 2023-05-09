@@ -1,21 +1,45 @@
 import { Component } from "react";
 import { Searchbar } from "components/Searchbar/Searchbar";
+import { ImageGallery } from "./ImageGallery/ImageGallery";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { Modal } from "components/Modal/Modal";
+import { GalleryApp } from './App.styled';
+
 
 export class App extends Component {
 
   state = {
-    pictureName: '',
+    searchQuery: '',
+    showModal: false,
+    currentImageUrl: ''
   };
 
-   handleSearchFormSubmit = pictureName=> {
-    this.setState({ pictureName });
+   handleSearchFormSubmit = searchQuery=> {
+    this.setState({ searchQuery });
+   };
+
+   handleImageClick = (event) =>{
+    this.setState({currentImageUrl:event.currentTarget.dataset.image});
+    this.toggleModal();
+   }
+
+   toggleModal = () => {
+    this.setState(({ showModal })=> ({
+      showModal: !showModal,
+    }));
    };
 
   render() {
+    const { searchQuery, showModal, currentImageUrl } = this.state;
     return (
-      <div>
+      <GalleryApp>
         <Searchbar onSubmit={this.handleSearchFormSubmit}/>
-      </div>
+        <ImageGallery searchQuery={searchQuery} onClick={this.handleImageClick}/>
+        { showModal && <Modal imageURL={currentImageUrl} onClose={this.toggleModal}/>}
+        <ToastContainer/>
+      </GalleryApp>
+      
     );
   };
   
