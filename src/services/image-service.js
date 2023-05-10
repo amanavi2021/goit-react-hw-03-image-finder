@@ -22,6 +22,7 @@ export default class ImageApiService {
         const url=`${BASE_URL}/?${searchParams}&page=${this.page}`;
         const response = await axios.get(url);
         const images = response.data;
+        this.incrementPage();
         return images;
     };
 

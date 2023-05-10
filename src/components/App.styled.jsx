@@ -6,3 +6,8 @@ export const GalleryApp = styled.div`
   grid-gap: 16px;
   padding-bottom: 24px;
   `;
+
+export const ErrorMessage = styled.div`
+ font-size: 24px;
+ margin-left: 100px;
+`;

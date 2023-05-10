@@ -13,7 +13,3 @@ display: grid;
   margin-right: auto;`
 ;
 
-export const ErrorMessage = styled.div`
- font-size: 24px;
- margin-left: 100px;
-`;

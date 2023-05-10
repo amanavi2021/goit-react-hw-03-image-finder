@@ -17,7 +17,7 @@ export class Searchbar extends Component {
     handleSubmit = event => {
         event.preventDefault();
         if(this.state.searchQuery.trim() === ''){
-          return toast('Ввeдите название картинки');  
+          return toast('Please enter text to search images');  
         };
 
         this.props.onSubmit(this.state.searchQuery);
